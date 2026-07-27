@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     let res = await axios.get("https://randomuser.me/api/");
     let user = res.data.results[0];
     console.log(res);
+    let latitud = user.location.coordinates.latitude
+    let longitud = user.location.coordinates.longitude
+
 
     document.getElementById("nombre").textContent = user.name.first;
     document.getElementById("apellido").textContent = user.name.last;
@@ -27,5 +30,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     document.getElementById("zonahoraria").textContent = user.location.timezone.description;
     document.getElementById("offset").textContent = user.location.timezone.offset;
+
+    document.getElementById("ubicacion").addEventListener("click", () => {
+        window.open(
+            `https://www.google.com/maps?q=${latitud},${longitud}`,
+            "_blank"
+        )
+    })
 
 });

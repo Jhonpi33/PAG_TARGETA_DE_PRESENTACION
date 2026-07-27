@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     let res = await axios.get("https://randomuser.me/api/");
     let user = res.data.results[0];
+    console.log(res);
 
     document.getElementById("nombre").textContent = user.name.first;
     document.getElementById("apellido").textContent = user.name.last;
